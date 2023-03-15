@@ -125,7 +125,12 @@ while health:
                         current_location.set_inhabitant(None)
                         print('А ти диви, перемогли!')
                     else:
-                        print('Та то перед тим, як кулаками махати маєш покумекати!\nА може задобрити?')
+                        print(f"Та то перед тим, як кулаками махати маєш покумекати!\nТепер у тебе {health} балів здоров'я\nА може задобрити?")
+                        if health == 0:
+                            health += mygame.death()
+                            if health != 0:
+                                continue
+                            print('Не кожен ж день свято. Але ви приїздіть, приїздіть, раптом пощастить наступного разу')
                         answer = input('>>>')
                         cost = inhabitant.bribe()
                         if money < cost and answer == 'так':
@@ -153,9 +158,16 @@ while health:
                         current_location.set_inhabitant(None)
                         print('А ти диви, перемогли!')
                     else:
-                        print('Та то перед тим, як кулаками махати маєш покумекати!\nА може задобрити?')
+                        print(f"Та то перед тим, як кулаками махати маєш покумекати!\nТепер у тебе {health} балів здоров'я\nА може задобрити?")
+                        if health == 0:
+                            health += mygame.death()
+                            if health != 0:
+                                continue
+                            print('Не кожен ж день свято. Але ви приїздіть, приїздіть, раптом пощастить наступного разу')
                         answer = input('>>>')
                         cost = inhabitant.bribe()
+                        if health == 0:
+                            print('Ну, не коден ж день святом має бути. Але ти приїзди іншим разом, може вийде')
                         if money < cost and answer == 'так':
                             print(f'Ти думажш я, лтвівський {inhabitant.name} ся продам за таку копійчину?! Біжи поки цілий і на очі не попадайся, бо Біг ми Боже...')
                         elif money >= cost and answer == 'так':
@@ -193,3 +205,4 @@ while health:
     if not any(street.get_inhabitant() for street in streets):
         print('Мої вітання, всіх перемогли.\nТепер гайда на Високий Замок то святкувати')
         break
+
