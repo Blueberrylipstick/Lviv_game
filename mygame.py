@@ -345,3 +345,15 @@ def beginning():
             return characters[1]
         else:
             print('Ану введи щось путнє')
+
+def death():
+    counter = 0
+    print('Як відгадвєш загадку, другий шанс отримаєш\nЩо змушує зайця почекати?\n1. Морква\n2. Вовк з "Ну постривай"')
+    choice = input('>>>')
+    if choice == '1' or counter == 1:
+        print('Ех, не твій день, друже')
+        return 0
+    else:
+        print('Ще потопчеш рясту')
+        counter += 1
+        return 1
